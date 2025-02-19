@@ -28,6 +28,9 @@
 #elif SENS_MAP == 0xA6A3 // A6 (volt), A3 (curr)
 #define SENS_CHAN 0x48
 #endif
+#elif SENS_MAP == 0xA6A0 // A6 (volt), A0 (curr)
+#define SENS_CHAN 0xc0
+#endif
 
 #ifndef ANALOG_CHAN
 #define ANALOG_CHAN 0x2 // ADC_IN2 (PA2)
@@ -41,7 +44,9 @@
 #define TEMP_FUNC(x) (((x) / 3300 - ST_TSENSE_CAL1_30C) * 320 / (ST_TSENSE_CAL2_110C - ST_TSENSE_CAL1_30C) + 120)
 #endif
 
+
 #define COMP_CSR MMIO32(SYSCFG_COMP_BASE + 0x1c)
+
 
 static char len, ain;
 static uint16_t buf[6];
